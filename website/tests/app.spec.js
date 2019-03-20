@@ -1,7 +1,7 @@
 
 describe('Testing LoyaltyOne App', function(){ 
     beforeEach(module('myApp'));
-    describe('reverse',function(){
+    describe('Testing LoyaltyOne Entry and Weather functions',function(){
 
         var $scope, ctrl;
 
