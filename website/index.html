@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <title>LoyaltyOne</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl"> 
+    <div class="jumbotron text-center">
+        <h1>LoyaltyOne</h1>
+        <p>
+        <form>
+            <div><nobr>Respond to: <input type="text" ng-model="entry.id"><button ng-click="clearRespondTo()">Clear</button></nobr></div>
+            <nobr>username: <input type="text" ng-model="entry.username"></nobr>
+            <nobr>text: <input type="text" ng-model="entry.text"></nobr>
+            <nobr>city: <input type="text" ng-model="entry.city"></nobr>
+            <input type="submit" ng-click="formDone(entry)" value="Done" />
+        </form>
+        </p>
+    </div>
+        
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-10">
+            <h3>Entries</h3>
+            <div id="data" name="data"></div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,29 @@
+{
+  "name": "loyaltyone",
+  "version": "1.0.0",
+  "description": "LoyaltyOne assignment",
+  "main": "handler.js",
+  "scripts": {
+    "start": "node handler.js",
+    "dev": "nodemon handler.js",
+    "build:prod": "webpack",
+    "build:webpack": "serverless webpack --out lib -d"
+  },
+  "author": "William Villamar",
+  "license": "MIT",
+  "dependencies": {
+    "pg": "^7.9.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^5.1.0"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^5.0.1",
+    "nodemon": "^1.18.10",
+    "path": "^0.12.7",
+    "serverless-plugin-include-dependencies": "^3.2.1",
+    "serverless-webpack": "^5.2.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-node-externals": "^1.7.2"
+  }
+}

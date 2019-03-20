@@ -1,0 +1,73 @@
+service: loyaltyoneassignment
+
+plugins:
+  - "serverless-plugin-include-dependencies"
+
+package:
+ include:
+   - handler.js
+   - handler.js.map
+ exclude:
+   - ./src/**
+   - ./website/**
+   - ./*.js
+   - ./*.html
+   - ./*.txt
+   - ./*.json
+   - ./*.yml
+   - ./*.map
+   - ./*.md
+   - ./*.doc
+
+custom:
+  webpackIncludeModules: true
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  vpc:
+    securityGroupIds:
+      - ${ssm:loyaltyone-db-sg}
+    subnetIds:
+      - ${ssm:subnet1}
+      - ${ssm:subnet2}
+      - ${ssm:subnet3}
+      - ${ssm:subnet4}
+      - ${ssm:subnet5}
+      - ${ssm:subnet6}
+  environment:
+    DB_HOST: ${ssm:loyaltyone-db-host}
+    DB_NAME: ${ssm:loyaltyone-db-name}
+    DB_USER: ${ssm:loyaltyone-db-user}
+    DB_PASSWORD: ${ssm:loyaltyone-db-password}
+
+functions:
+  getEntries:
+    handler: handler.entries
+    timeout: 10
+    events:
+     - http:
+         path: api/entries
+         method: get
+  getEntryResponses:
+    handler: handler.responses
+    timeout: 10
+    events:
+     - http:
+         path: api/entry/{id}/responses
+         method: get
+  addEntry:
+    handler: handler.addEntry
+    timeout: 10
+    events:
+      - http:
+          path: api/entry
+          method: post
+  entryResponse:
+    handler: handler.addEntry
+    timeout: 10
+    events:
+      - http:
+          path: api/entry/{id}/response
+          method: post
+
