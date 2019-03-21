@@ -1,10 +1,10 @@
 swagger: "2.0"
 info:
-  version: "2018-06-01T"
+  version: "1.0.0"
   title: "LoyaltyOne"
   description: "LoyaltyOne Assignment APIs"
-host: "loyaltyone.wvillamar.com"
-basePath: '/api'
+host: "j0jjemeyy5.execute-api.us-east-1.amazonaws.com"
+basePath: '/dev/api'
 schemes:
 - "https"
 paths:
@@ -12,7 +12,13 @@ paths:
     post:
       consumes:
         - application/json
-      description: "Sample Payload: {\"username\":\"William\",\"city\":\"Toronto\",\"text\":\"some random text\"}"
+      description: "Add entry."
+      parameters:
+        - in: body
+          name: entry
+          required: true
+          schema:
+            $ref: "#/definitions/entryRequest"
       responses:
         200:
           description: "Adds a top level entry."
@@ -22,13 +28,18 @@ paths:
     post:
       consumes:
         - application/json
-      description: "Sample Payload: {\"username\":\"William\",\"city\":\"Toronto\",\"text\":\"some random text\"}"
+      description: "Respond to an entry"
       parameters:
-      - name: id
-        in: "path"
-        required: true
-        type: "string"
-        description: "Entry ID for which a response is being submitted."
+        - in: "path"    
+          name: id
+          required: true
+          type: "string"
+          description: "Entry ID for which a response is being submitted."
+        - in: body
+          name: entry
+          required: true
+          schema:
+            $ref: "#/definitions/entryRequest"
       responses:
         200:
           description: "Adds a response to an entry."
@@ -55,6 +66,15 @@ paths:
           schema:
             $ref: "#/definitions/entries"
 definitions:
+  entryRequest:
+    type: object
+    properties:
+      username:
+        type: "string"
+      city:
+        type: "string"
+      text:
+        type: "string"
   entries:
     type: object
     properties:
