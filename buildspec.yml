@@ -11,6 +11,7 @@ phases:
     commands:
       - npm install
       - npm run build:prod
+      - mv .webpack/* .
       - serverless package
   post_build:
     commands:
